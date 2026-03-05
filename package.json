@@ -1,0 +1,20 @@
+{
+  "name": "simple-auth-app",
+  "version": "1.0.0",
+  "description": "Simple Node/Express app with signup/signin and static frontend for Render deployment",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^9.2.4"
+  }
+}

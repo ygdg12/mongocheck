@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Auth App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <h1>Simple Auth App</h1>
+
+      <div class="card">
+        <div class="tabs">
+          <button id="tab-login" class="tab active">Sign In</button>
+          <button id="tab-signup" class="tab">Sign Up</button>
+        </div>
+
+        <form id="login-form" class="form active">
+          <label>
+            Email
+            <input type="email" id="login-email" required />
+          </label>
+          <label>
+            Password
+            <input type="password" id="login-password" required />
+          </label>
+          <button type="submit">Sign In</button>
+        </form>
+
+        <form id="signup-form" class="form">
+          <label>
+            Email
+            <input type="email" id="signup-email" required />
+          </label>
+          <label>
+            Password
+            <input type="password" id="signup-password" required minlength="6" />
+          </label>
+          <button type="submit">Sign Up</button>
+        </form>
+
+        <div id="message" class="message"></div>
+      </div>
+
+      <div id="profile" class="card hidden">
+        <h2>Profile</h2>
+        <p id="profile-email"></p>
+        <button id="logout-btn" class="secondary">Log Out</button>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+  </html>
+
