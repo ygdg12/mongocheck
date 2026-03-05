@@ -9,24 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-me";
 const MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/simple_auth_app";
-
-if (
-  !MONGODB_URI ||
-  (!MONGODB_URI.startsWith("mongodb://") &&
-    !MONGODB_URI.startsWith("mongodb+srv://"))
-) {
-  console.error(
-    'Invalid MONGODB_URI. It must start with "mongodb://" or "mongodb+srv://".'
-  );
-  process.exit(1);
-}
-
-console.log(
-  `Connecting to MongoDB with scheme: ${
-    MONGODB_URI ? MONGODB_URI.split("://")[0] : "undefined"
-  }`
-);
+  "mongodb+srv://yared2:A2pFYx1hTGXXSjJx@cluster0.6xvuaoo.mongodb.net/?appName=Cluster0";
 
 // User model
 const userSchema = new mongoose.Schema(
@@ -123,6 +106,8 @@ app.post("/api/login", async (req, res) => {
 app.get("/api/profile", authMiddleware, (req, res) => {
   res.json({ email: req.user.email });
 });
+
+console.log("Connecting to MongoDB...");
 
 mongoose
   .connect(MONGODB_URI)
