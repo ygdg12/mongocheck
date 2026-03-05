@@ -11,6 +11,23 @@ const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-me";
 const MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/simple_auth_app";
 
+if (
+  !MONGODB_URI ||
+  (!MONGODB_URI.startsWith("mongodb://") &&
+    !MONGODB_URI.startsWith("mongodb+srv://"))
+) {
+  console.error(
+    'Invalid MONGODB_URI. It must start with "mongodb://" or "mongodb+srv://".'
+  );
+  process.exit(1);
+}
+
+console.log(
+  `Connecting to MongoDB with scheme: ${
+    MONGODB_URI ? MONGODB_URI.split("://")[0] : "undefined"
+  }`
+);
+
 // User model
 const userSchema = new mongoose.Schema(
   {
