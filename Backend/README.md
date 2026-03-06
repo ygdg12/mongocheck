@@ -63,37 +63,30 @@ Server defaults to `http://localhost:5000` unless `PORT` is set.
 
 ### Auth (`/api/auth`)
 
-- **POST** `/api/auth/register`  
-  Register a new user. The **first** registered user is automatically given the `admin` role (simple seeding).
-
-  Request body:
+- **POST** `/api/auth/admin-login`  
+  Hardcoded admin login. Use the default credentials:
 
   ```json
   {
-    "email": "user@example.com",
-    "password": "password123"
+    "email": "admin@tsedey.com",
+    "password": "Admin@123"
   }
   ```
 
-  Response:
+  On success returns a JWT and admin flag:
 
   ```json
   {
     "success": true,
     "data": {
       "token": "jwt-token",
-      "user": {
-        "id": "...",
-        "email": "user@example.com",
-        "role": "admin",
-        "createdAt": "..."
+      "admin": {
+        "email": "admin@tsedey.com",
+        "isAdmin": true
       }
     }
   }
   ```
-
-- **POST** `/api/auth/login`  
-  Log in existing user and receive JWT.
 
 ---
 

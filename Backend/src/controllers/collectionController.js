@@ -35,7 +35,6 @@ const createCollection = async (req, res, next) => {
       name,
       description,
       image: imageUrl || undefined,
-      createdBy: req.user._id,
     });
 
     res.status(201).json({ success: true, data: collection });

@@ -6,8 +6,7 @@ const {
   updateItem,
   deleteItem,
 } = require("../controllers/itemController");
-const authMiddleware = require("../middleware/authMiddleware");
-const adminMiddleware = require("../middleware/adminMiddleware");
+const adminAuthMiddleware = require("../middleware/authMiddleware");
 const upload = require("../middleware/uploadMiddleware");
 
 const router = express.Router();
@@ -16,24 +15,22 @@ const router = express.Router();
 router.get("/collections/:collectionId/items", getItemsByCollection);
 router.get("/items/:id", getItemById);
 
-// Admin-only
+// Admin-only (requires hardcoded admin login)
 router.post(
   "/collections/:collectionId/items",
-  authMiddleware,
-  adminMiddleware,
+  adminAuthMiddleware,
   upload.single("image"),
   createItem
 );
 
 router.put(
   "/items/:id",
-  authMiddleware,
-  adminMiddleware,
+  adminAuthMiddleware,
   upload.single("image"),
   updateItem
 );
 
-router.delete("/items/:id", authMiddleware, adminMiddleware, deleteItem);
+router.delete("/items/:id", adminAuthMiddleware, deleteItem);
 
 module.exports = router;
 

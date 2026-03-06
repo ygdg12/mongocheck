@@ -14,6 +14,7 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
+const CLIENT_URL_PROD = process.env.CLIENT_URL_PROD;
 
 connectDB();
 
@@ -22,7 +23,7 @@ app.use(helmet());
 app.use(morgan("dev"));
 app.use(
   cors({
-    origin: CLIENT_URL,
+    origin: [CLIENT_URL, CLIENT_URL_PROD].filter(Boolean),
     credentials: true,
   })
 );
